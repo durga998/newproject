@@ -10,21 +10,15 @@ import Paper from '@material-ui/core/Paper';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: '#3f51b5',
     color: theme.palette.common.white,
+    fontSize: 18,
   },
   body: {
     fontSize: 18,
   },
 }))(TableCell);
 
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
 
 function createData(name,description,amount,currency,status) {
   return { name, description,amount,currency,status };
@@ -44,7 +38,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CustomizedTables() {
+export default function BasicTable() {
   const classes = useStyles();
 
   return (
@@ -61,7 +55,7 @@ export default function CustomizedTables() {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <StyledTableRow key={row.name}>
+            <TableRow key={row.name}>
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
@@ -69,7 +63,7 @@ export default function CustomizedTables() {
               <StyledTableCell align="right">{row.amount}</StyledTableCell>
               <StyledTableCell align="right">{row.currency}</StyledTableCell>
               <StyledTableCell align="right">{row.status}</StyledTableCell>
-            </StyledTableRow>
+            </TableRow>
           ))}
         </TableBody>
       </Table>
